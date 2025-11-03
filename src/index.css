@@ -1,68 +1,153 @@
+/* --- Global Variables and Base Reset --- */
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  /* Comma.ai specific colors */
+  --color-text: #000;
+  --color-background: #fff;
+  --color-accent-green: #51ff00;
+  --color-light-grey: #f9f9f9; /* For alternating table rows */
+  --color-header-bg: #f2f2f2; /* For sticky table headers */
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  margin: 0;
+  /* The source uses monospace */
+  font-family: monospace;
+  background-color: var(--color-background);
+  color: var(--color-text);
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1, h2, h3 {
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 1.75em;
+}
+
+/* --- App Structure and Input Area (Adapted for Kanban) --- */
+.app {
+  padding: 0; 
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  flex-direction: column;
+  align-items: flex-start; /* Aligns with the source's left-aligned content */
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+.add-task {
+  display: flex;
+  gap: 10px;
+  margin: 20px 0; /* Separator equivalent */
+  width: 100%;
+  max-width: 400px; /* Kept narrow for the monospace feel */
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+.add-task input {
+  flex-grow: 1;
+  padding: 8px;
+  border: 1px solid #000;
+  border-radius: 0; /* No rounded corners */
+  background-color: var(--color-background);
+  color: var(--color-text);
+  font-size: 1.6em; /* Matches p, pre font size */
+  font-family: monospace;
+  outline: none;
+}
+
+.add-task button {
+  padding: 8px 15px;
+  background-color: var(--color-accent-green);
+  color: var(--color-text);
+  border: 1px solid #000;
+  border-radius: 0;
   cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  font-size: 1.75em;
+  font-family: monospace;
+  font-weight: bold;
+  transition: background-color 0.1s;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+.add-task button:hover {
+  background-color: #40cc00; /* Darker green on hover */
+}
+
+/* --- Kanban Board Layout --- */
+.kanban-board {
+  display: flex;
+  gap: 5px;
+  max-width: 90%;
+  width: 100%;
+  max-width: 
+  overflow-x: auto;
+  padding: 10px 0;
+}
+
+/* --- Column Styling --- */
+.column {
+  flex: 1 0 300px;
+  background-color: var(--color-background); /* White background like the source tables */
+  border: 1px solid #000; /* Define column boundaries clearly */
+  border-radius: 0;
+  padding: 10px;
+  min-height: 800px;
+  box-shadow: none;
+}
+
+.column h3 {
+  text-align: left;
+  margin-bottom: 15px;
+  color: var(--color-text);
+  font-size: 1.4em;
+  font-weight: none;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.task-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 100%;
+}
+
+.column.dropping {
+  /* Use the green accent for highlight */
+  border: 2px solid var(--color-accent-green);
+  box-shadow: 0 0 5px 1px var(--color-accent-green);
+}
+
+/* --- Task Card Styling --- */
+.task-card {
+  /* Mimics the list/table row styling of the source */
+  background-color: var(--color-light-grey);
+  padding: 10px;
+  border-radius: 0;
+  cursor: grab;
+  color: var(--color-text);
+  font-size: 1.5em;
+  font-weight: 400;
+  border: 1px solid #000;
+  transition: background-color 0.1s;
+}
+
+.task-card:hover {
+  /* Mimic the subtle green highlight used for hover/selection in the source */
+  background-color: #51ff0033;
+}
+
+.task-content-highlight {
+  background-color: #ffff0066;
+  display: inline;
+}
+
+/* --- Divider/Separator --- */
+.divider {
+  border-top: 1px solid #000;
+  margin: 20px 0;
+  width: 100%;
 }
