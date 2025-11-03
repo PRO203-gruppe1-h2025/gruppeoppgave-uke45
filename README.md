@@ -1,22 +1,16 @@
-# gruppeoppgave-uke45
-For gruppeoppgaven uke 45
+# React + Vite
 
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Øvingsprosjekt 2
-Et program for å organisere gjøremål og delegering av ansvar for gjøremålene,
-hvor gjøremål organiseres som en TODO-liste som automatisk genererer kort
-i en Kanban-visning, hvor kolonnene i Kanban-visningen samsvarer med
-status per gjøremål
-1. En gruppeleder håndterer programmet, og har mulighet for å legge til
-gruppemedlemmer i en liste som kan brukes som oppslag med tanke på delegering av
-gjøremål
-2. I gjøremåls-listen så kan gjøremål brytes opp i mindre gjøremål, og hvert gjøremål
-uavhengig av plassering i «hierarkiet» har følgende data tilknyttet:
-a. Status
-i. I rangert rekkefølge fra «Backlog» til «Ferdig», hva som er i mellom er opp
-til dere
-b. Ansvar
-i. Hvem av gruppemedlemmene gjøremålet er delegert til
-3. Kanban-visning som viser alle gjøremålene og avhengig av status på gjøremålet
-bestemmer hvilken kolonne noe vises i
-4. Endringer i gjøremålslisten skal reflekteres i Kanban-visningen og omvendt
+Currently, two official plugins are available:
+
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+## React Compiler
+
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+
+## Expanding the ESLint configuration
+
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
